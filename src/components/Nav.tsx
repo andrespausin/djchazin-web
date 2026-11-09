@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { nav, links } from '@/data/site';
 import { SocialIcon } from './Music';
 
@@ -10,6 +11,9 @@ export default function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => setOpen(false), [pathname]);
   useEffect(() => {
@@ -47,11 +51,16 @@ export default function Nav() {
         <span /><span />
       </button>
     </header>
-    <div className="menu" data-open={open ? '' : undefined} inert={!open}>
-      <nav aria-label="Mobile">
-        <ul className="nav__links">{items}</ul>
-      </nav>
-    </div>
+    {/* Portalled straight into <body>: no ancestor (header, layout wrappers, page transitions)
+        can become the containing block of this fixed overlay and clip it. */}
+    {mounted && createPortal(
+      <div className="menu" data-open={open ? '' : undefined} inert={!open}>
+        <nav aria-label="Mobile">
+          <ul className="nav__links">{items}</ul>
+        </nav>
+      </div>,
+      document.body,
+    )}
     </>
   );
 }

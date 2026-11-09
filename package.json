@@ -8,13 +8,16 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "generate:map": "node scripts/generate-map.mjs"
+    "generate:map": "node scripts/generate-map.mjs",
+    "convert:images": "node scripts/convert-images.mjs",
+    "build:press": "cd public/press && rm -f CHAZIN_Press_Pack.zip && zip -r -X -q CHAZIN_Press_Pack.zip CHAZIN_EPK_2026.pdf CHAZIN_Riders_Local_2026.pdf CHAZIN_Riders_International_2026.pdf photos logos",
+    "trace:magna": "node scripts/trace-magna.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
     "gsap": "^3.13.0",
     "lenis": "^1.3.4",
-    "next": "^15.3.0",
+    "next": "^16.4.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
@@ -23,6 +26,8 @@
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
     "d3-geo": "^3.1.1",
+    "potrace": "^2.1.8",
+    "sharp": "^0.35.5",
     "topojson-client": "^3.1.0",
     "typescript": "^5.8.3",
     "world-atlas": "^2.0.2"

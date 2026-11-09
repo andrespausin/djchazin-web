@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Equalizer, SocialIcon, Arrow } from '@/components/Music';
-import { emails, links, socials } from '@/data/site';
+import { SocialIcon, Arrow } from '@/components/Music';
+import { emails, line, links, socials } from '@/data/site';
 
 export const metadata: Metadata = {
   title: 'Links',
@@ -14,7 +14,7 @@ export default function Links() {
     <main className="hub">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img className="hub__logo" src="/brand/chazin-logo-white.svg" alt="CHAZIN" width={280} height={81} />
-      <p className="eyebrow hub__tag"><Equalizer bars={4} /> Latin Tech House</p>
+      <p className="eyebrow hub__tag">Latin House & Tech House</p>
       <ul className="hub__list">
         {socials.map((s, i) => (
           <li key={s.key} style={{ animationDelay: `${0.08 * i}s` }}>
@@ -23,6 +23,7 @@ export default function Links() {
         ))}
         <li style={{ animationDelay: '0.5s' }}><a href={`mailto:${emails.booking}`}><span className="hub__dot" /> <span>Booking</span> <Arrow /></a></li>
         <li style={{ animationDelay: '0.58s' }}><a href={links.epk} download><span className="hub__dot" /> <span>Press kit (PDF)</span> <Arrow /></a></li>
+        <li style={{ animationDelay: '0.66s' }}><div className="hub__plain"><span className="hub__dot" /> <span>LINE</span> <span className="hub__id">{line}</span></div></li>
       </ul>
       <Link className="hub__site" href="/">djchazin.com</Link>
     </main>

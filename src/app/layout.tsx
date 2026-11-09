@@ -20,15 +20,15 @@ const display = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://djchazin.com'),
-  title: { default: 'CHAZIN — Latin Tech House', template: '%s — CHAZIN' },
+  title: { default: 'CHAZIN — Latin House & Tech House', template: '%s — CHAZIN' },
   description:
-    'Official website of Chazin: Spanish-born DJ and producer of Venezuelan descent, based in Bangkok. Latin Tech House, founder of Magna Beat Records.',
+    'Official website of Chazin: Spanish-born DJ and producer of Venezuelan descent, based in Bangkok. Latin House & Tech House, founder of Magna Beat Records.',
   openGraph: {
-    title: 'CHAZIN — Latin Tech House',
+    title: 'CHAZIN — Latin House & Tech House',
     description: 'Spain × Venezuela · Based in Bangkok. Founder of Magna Beat Records.',
     url: 'https://djchazin.com',
     siteName: 'CHAZIN',
-    images: [{ url: '/images/photos/cover.jpg', width: 1800, height: 2700 }],
+    images: [{ url: '/press/photos/chazin-press-01.jpg', width: 1717, height: 2576 }],
     type: 'website',
   },
   twitter: { card: 'summary_large_image' },

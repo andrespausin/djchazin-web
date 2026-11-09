@@ -1,107 +1,95 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { BPM } from '@/data/site';
+import { createSimulatedSource } from '@/lib/audioLevels';
+import { usePlayer } from './PlayerProvider';
 
 type Props = {
   bars?: number;
   className?: string;
-  /** 'up' grows bars from the bottom, 'mirror' grows them from the centre line */
-  mode?: 'up' | 'mirror';
+  /** 'mirror' grows bars from a centre line, 'arc' radiates them around a record */
+  shape?: 'mirror' | 'arc';
+  /** Varies the pattern per track */
+  seed?: number;
 };
 
-/**
- * Procedural spectrum analyser synced to the artist's tempo (no audio is loaded).
- * Bass bands sit in the centre and kick on every beat; highs shimmer on the sides.
- * Pauses itself when offscreen or when the tab is hidden; static under reduced motion.
- */
-export default function Visualizer({ bars = 72, className, mode = 'up' }: Props) {
+const ARC = (78 * Math.PI) / 180; // the part of the record that sticks out of the sleeve
+const DISC_RATIO = 1 / 1.32;      // disc diameter relative to the canvas
+
+/** Draws only while audio is really playing; settles to nothing on pause. Static under reduced motion. */
+export default function Visualizer({ bars = 48, className, shape = 'mirror', seed = 0 }: Props) {
   const ref = useRef<HTMLCanvasElement>(null);
+  const { status, getSeconds } = usePlayer();
+  const active = status === 'playing';
+  const levels = useRef(new Float32Array(bars));
 
   useEffect(() => {
     const canvas = ref.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
+    const ctx = canvas?.getContext('2d');
+    if (!canvas || !ctx || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    let w = 0, h = 0, raf = 0, visible = true;
-    let grad: CanvasGradient | null = null;
-
-    const seeds = Array.from({ length: bars }, (_, i) => ({
-      f: 0.8 + ((i * 7919) % 97) / 40,
-      p: ((i * 104729) % 360) * (Math.PI / 180),
-      center: 1 - Math.abs((i / (bars - 1)) * 2 - 1), // 1 in the middle, 0 at the edges
-    }));
-    const levels = new Float32Array(bars);
-    const beat = 60 / BPM;
+    const source = createSimulatedSource(bars, seed);
+    const target = new Float32Array(bars);
+    const current = levels.current;
+    let raf = 0, w = 0, h = 0, visible = true;
 
     const resize = () => {
-      w = canvas.clientWidth;
-      h = canvas.clientHeight;
-      canvas.width = Math.round(w * dpr);
-      canvas.height = Math.round(h * dpr);
+      w = canvas.clientWidth; h = canvas.clientHeight;
+      canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      grad = ctx.createLinearGradient(0, h, 0, 0);
-      grad.addColorStop(0, 'rgba(194,168,120,0.95)');
-      grad.addColorStop(0.6, 'rgba(242,236,224,0.55)');
-      grad.addColorStop(1, 'rgba(242,242,242,0.08)');
     };
 
-    const frame = (ms: number) => {
-      const t = ms / 1000;
-      const phase = (t % beat) / beat;
-      const kick = Math.exp(-phase * 7);
-      const bar = Math.floor(t / beat) % 4; // accent on the 1
-      const accent = bar === 0 ? 1.15 : 1;
+    const draw = () => {
       ctx.clearRect(0, 0, w, h);
-      if (!grad) return;
-      ctx.fillStyle = grad;
-      const gap = Math.max(2, w / bars / 4);
-      const bw = (w - gap * (bars - 1)) / bars;
-      for (let i = 0; i < bars; i++) {
-        const s = seeds[i];
-        const shimmer = 0.5 + 0.5 * Math.sin(t * s.f * 2.2 + s.p);
-        const groove = 0.5 + 0.5 * Math.sin(t * 1.3 + i * 0.35);
-        const target = Math.min(1, (0.12 + 0.45 * shimmer * groove + kick * s.center * s.center * 0.75) * accent);
-        levels[i] += (target - levels[i]) * (target > levels[i] ? 0.55 : 0.12); // fast attack, slow release
-        const bh = Math.max(2, levels[i] * h);
-        const x = i * (bw + gap);
-        if (mode === 'mirror') ctx.fillRect(x, (h - bh) / 2, bw, bh);
-        else ctx.fillRect(x, h - bh, bw, bh);
+      ctx.fillStyle = ctx.strokeStyle = '#c2a878';
+      if (shape === 'arc') {
+        const cx = w / 2, cy = h / 2, r = (w / 2) * DISC_RATIO + 5, reach = w / 2 - r - 2;
+        ctx.lineCap = 'round'; ctx.lineWidth = Math.max(1.5, w / 200);
+        for (let i = 0; i < bars; i++) {
+          const a = -ARC + (i / (bars - 1)) * ARC * 2;
+          const len = Math.max(0.5, current[i] * reach);
+          ctx.globalAlpha = 0.35 + current[i] * 0.65;
+          ctx.beginPath();
+          ctx.moveTo(cx + r * Math.cos(a), cy + r * Math.sin(a));
+          ctx.lineTo(cx + (r + len) * Math.cos(a), cy + (r + len) * Math.sin(a));
+          ctx.stroke();
+        }
+        ctx.globalAlpha = 1;
+      } else {
+        const gap = 2, bw = (w - gap * (bars - 1)) / bars;
+        for (let i = 0; i < bars; i++) {
+          const bh = Math.max(2, current[i] * h);
+          ctx.fillRect(i * (bw + gap), (h - bh) / 2, bw, bh);
+        }
       }
     };
 
-    const loop = (ms: number) => {
-      frame(ms);
+    const loop = () => {
+      if (active) source(getSeconds(), target); else target.fill(0);
+      let energy = 0;
+      for (let i = 0; i < bars; i++) {
+        current[i] += (target[i] - current[i]) * (target[i] > current[i] ? 0.55 : 0.12); // fast attack, slow release
+        energy += current[i];
+      }
+      draw();
+      if (!active && energy < 0.02) { ctx.clearRect(0, 0, w, h); return; }
       if (visible && !document.hidden) raf = requestAnimationFrame(loop);
     };
-    const start = () => {
-      cancelAnimationFrame(raf);
-      if (reduce) frame(1200);
-      else raf = requestAnimationFrame(loop);
-    };
+    const start = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(loop); };
 
     resize();
-    const ro = new ResizeObserver(() => { resize(); if (reduce) frame(1200); });
-    ro.observe(canvas);
-    const io = new IntersectionObserver(([e]) => {
-      visible = e.isIntersecting;
-      if (visible) start(); else cancelAnimationFrame(raf);
-    });
+    const ro = new ResizeObserver(resize); ro.observe(canvas);
+    const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (visible) start(); });
     io.observe(canvas);
     const onVis = () => { if (!document.hidden && visible) start(); };
     document.addEventListener('visibilitychange', onVis);
     start();
-
     return () => {
-      cancelAnimationFrame(raf);
-      ro.disconnect();
-      io.disconnect();
+      cancelAnimationFrame(raf); ro.disconnect(); io.disconnect();
       document.removeEventListener('visibilitychange', onVis);
     };
-  }, [bars, mode]);
+  }, [active, bars, seed, shape, getSeconds]);
 
   return <canvas ref={ref} className={className} aria-hidden="true" />;
 }

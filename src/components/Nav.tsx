@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { nav, links } from '@/data/site';
-import { Equalizer } from './Music';
+import { SocialIcon } from './Music';
 
 export default function Nav() {
   const pathname = usePathname();
@@ -38,7 +38,7 @@ export default function Nav() {
         </ul>
       </nav>
       <a className="nav__onair" href={links.spotify} target="_blank" rel="noreferrer">
-        <Equalizer /> <span>Listen</span>
+        <SocialIcon name="spotify" size={16} /> <span>Listen</span>
       </a>
       <button className="nav__burger" aria-expanded={open} aria-label={open ? 'Close menu' : 'Open menu'} onClick={() => setOpen((o) => !o)}>
         <span /><span />

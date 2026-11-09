@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import { statSync } from 'node:fs';
+import path from 'node:path';
 import PageHeader from '@/components/PageHeader';
 import { Reveal } from '@/components/Motion';
 import { Arrow } from '@/components/Music';
@@ -10,24 +12,34 @@ export const metadata: Metadata = {
   description: 'Official press photos, logos and the electronic press kit of Chazin, ready to download for promoters.',
 };
 
+const packSize = `${Math.round(statSync(path.join(process.cwd(), 'public/press/CHAZIN_Press_Pack.zip')).size / 1048576)} MB`;
+
 export default function Press() {
   return (
     <>
-      <PageHeader index="04" eyebrow="Press" title={'Press\nassets.'} intro="Official photos, logos and the electronic press kit — free to use for promotion." />
+      <PageHeader index="04" eyebrow="Press" title={'Press\nassets'} intro="Official photos, logos and the electronic press kit — free to use for promotion." image={{ src: '/images/epk-v4/p9_profile.webp', alt: 'Chazin, profile portrait', position: 'center 12%' }} />
 
-      <section className="section">
-        <a className="epk" href={links.epk} download>
-          <span><span className="eyebrow">Electronic press kit · PDF</span><span className="display">Download the EPK</span></span>
-          <Arrow size={28} />
-        </a>
-        <a className="epk" href={links.pack} download>
-          <span><span className="eyebrow">Photos · logos · riders · ZIP</span><span className="display">Download the full press pack</span></span>
-          <Arrow size={28} />
-        </a>
-        <a className="epk" href={links.riders} download>
-          <span><span className="eyebrow">Hospitality &amp; technical · PDF</span><span className="display">Download the riders</span></span>
-          <Arrow size={28} />
-        </a>
+      <section className="section press-top">
+        <div className="press-kit">
+          <a className="epk" href={links.pack} download>
+            <span>
+              <span className="display">Download the full press kit</span>
+              <span className="press-kit__sub">EPK, riders (local + international), 8 photos and logos · ZIP · {packSize}</span>
+            </span>
+            <Arrow size={28} />
+          </a>
+          <div className="press-files">
+            <a className="btn" href={links.epk} download>EPK · PDF <Arrow /></a>
+          </div>
+        </div>
+        <div>
+          <p className="eyebrow">Short bio · copy & paste</p>
+          <div className="short-bio"><p>{bio[0]} {bio[1]}</p></div>
+          <div className="press-riders">
+            <a className="btn" href={links.ridersInternational} download>Riders · International <Arrow /></a>
+            <a className="btn" href={links.ridersLocal} download>Riders · Local <Arrow /></a>
+          </div>
+        </div>
       </section>
 
       <section className="section">
@@ -35,7 +47,7 @@ export default function Press() {
         <Reveal className="press-grid">
           {pressPhotos.map((p) => (
             <a key={p.file} href={p.file} download className="press-photo" data-reveal>
-              <span className="press-photo__img"><Image src={p.thumb} alt={p.label} fill sizes="(max-width: 700px) 50vw, 25vw" style={{ objectFit: 'cover', objectPosition: 'center 20%' }} /></span>
+              <span className="press-photo__img"><Image src={p.thumb} alt={`Chazin press ${p.label.toLowerCase()}`} fill quality={90} sizes="(max-width: 800px) 50vw, 25vw" style={{ objectFit: 'cover', objectPosition: 'center 20%' }} /></span>
               <span className="press-photo__label">{p.label} · JPG <Arrow /></span>
             </a>
           ))}
@@ -55,11 +67,6 @@ export default function Press() {
             </a>
           ))}
         </Reveal>
-      </section>
-
-      <section className="section">
-        <p className="eyebrow">Short bio · copy & paste</p>
-        <div className="short-bio"><p>{bio[0]} {bio[3]}</p></div>
       </section>
     </>
   );

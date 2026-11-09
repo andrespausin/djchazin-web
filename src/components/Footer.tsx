@@ -1,26 +1,23 @@
 import Link from 'next/link';
 import { emails, socials, nav } from '@/data/site';
-import { SocialIcon, Waveform } from './Music';
+import { SocialIcon } from './Music';
 
 export default function Footer() {
   return (
     <footer className="footer">
-      <Waveform bars={160} className="footer__wave" />
       <div className="footer__grid">
         <div className="footer__brand">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/brand/chazin-logo-white.svg" alt="CHAZIN" width={240} height={69} loading="lazy" />
-          <p>Latin Tech House · Spain × Venezuela · Based in Bangkok</p>
+          <p>Latin House & Tech House · Spain × Venezuela · Based in Bangkok</p>
         </div>
-        <div>
-          <p className="eyebrow">Explore</p>
+        <nav aria-label="Explore">
           <ul className="footer__list">
             {nav.map((n) => <li key={n.href}><Link href={n.href}>{n.label}</Link></li>)}
             <li><Link href="/links">All links</Link></li>
           </ul>
-        </div>
+        </nav>
         <div>
-          <p className="eyebrow">Contact</p>
           <ul className="footer__list">
             <li><a href={`mailto:${emails.booking}`}>{emails.booking}</a></li>
             <li><a href={`mailto:${emails.info}`}>{emails.info}</a></li>

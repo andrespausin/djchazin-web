@@ -11,8 +11,7 @@ export const links = {
   site: 'https://djchazin.com',
   epk: '/press/CHAZIN_EPK_2026.pdf',
   pack: '/press/CHAZIN_Press_Pack.zip',
-  ridersLocal: '/press/CHAZIN_Riders_Local_2026.pdf',
-  ridersInternational: '/press/CHAZIN_Riders_International_2026.pdf',
+  riders: '/press/CHAZIN_Riders_2026.pdf',
 } as const;
 
 export const emails = {

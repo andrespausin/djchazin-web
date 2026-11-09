@@ -20,7 +20,16 @@ export default function Nav() {
   }, []);
   useEffect(() => { document.documentElement.classList.toggle('menu-open', open); }, [open]);
 
+  const items = nav.map((n) => (
+    <li key={n.href}>
+      <Link href={n.href} className={pathname.startsWith(n.href) ? 'is-active' : undefined}>
+        <span>{n.label}</span>
+      </Link>
+    </li>
+  ));
+
   return (
+    <>
     <header className={`nav${scrolled ? ' nav--scrolled' : ''}${open ? ' nav--open' : ''}`}>
       <Link href="/" className="nav__logo" aria-label="Chazin — home">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -28,13 +37,7 @@ export default function Nav() {
       </Link>
       <nav aria-label="Main">
         <ul className="nav__links">
-          {nav.map((n) => (
-            <li key={n.href}>
-              <Link href={n.href} className={pathname.startsWith(n.href) ? 'is-active' : undefined}>
-                <span>{n.label}</span>
-              </Link>
-            </li>
-          ))}
+          {items}
         </ul>
       </nav>
       <a className="nav__onair" href={links.spotify} target="_blank" rel="noreferrer">
@@ -44,5 +47,11 @@ export default function Nav() {
         <span /><span />
       </button>
     </header>
+    <div className="menu" data-open={open ? '' : undefined} inert={!open}>
+      <nav aria-label="Mobile">
+        <ul className="nav__links">{items}</ul>
+      </nav>
+    </div>
+    </>
   );
 }

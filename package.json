@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit",
     "generate:map": "node scripts/generate-map.mjs",
     "convert:images": "node scripts/convert-images.mjs",
+    "build:press": "cd public/press && rm -f CHAZIN_Press_Pack.zip && zip -r -X -q CHAZIN_Press_Pack.zip CHAZIN_EPK_2026.pdf CHAZIN_Riders_Local_2026.pdf CHAZIN_Riders_International_2026.pdf photos logos",
     "trace:magna": "node scripts/trace-magna.mjs"
   },
   "dependencies": {

@@ -5,6 +5,7 @@ import path from 'node:path';
 import sharp from 'sharp';
 
 const ROOT = new URL('../public/images/', import.meta.url).pathname;
+const TARGET = path.join(ROOT, process.argv[2] ?? ''); // optional subfolder, e.g. epk-v4
 
 async function* walk(dir) {
   for (const e of await fs.readdir(dir, { withFileTypes: true })) {
@@ -15,7 +16,7 @@ async function* walk(dir) {
 }
 
 let before = 0, after = 0;
-for await (const file of walk(ROOT)) {
+for await (const file of walk(TARGET)) {
   const out = file.replace(/\.(jpe?g|png)$/i, '.webp');
   const isLogo = /\.png$/i.test(file);
   // High quality: next/image re-encodes these on delivery, so avoid stacking loss here.

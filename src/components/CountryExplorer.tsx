@@ -15,15 +15,24 @@ export default function CountryExplorer({ svg }: { svg: string }) {
   useEffect(() => {
     if (!selected) return;
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setSelected(null); };
+    // Any click outside the country rows goes back to the world view.
+    const onClick = (e: MouseEvent) => { if (!(e.target as Element).closest('.country')) setSelected(null); };
     document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
+    document.addEventListener('click', onClick);
+    return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('click', onClick); };
   }, [selected]);
 
   const focus = useMemo(() => ({ bounds: selected ? frames[selected] : null, country: selected }), [selected]);
 
   return (
     <div className="tour">
-      <div className="tour__map"><TourMap svg={svg} focus={focus} entrance /></div>
+      <div className="tour__map">
+        <TourMap svg={svg} focus={focus} entrance />
+        <button type="button" className="venue__close tour__close" data-show={selected ? '' : undefined} aria-label="Back to world map" tabIndex={selected ? 0 : -1} onClick={() => setSelected(null)}>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg>
+      </button>
+      </div>
+      <div className="tour__side">
       <Reveal className="countries" stagger={0.05}>
         {countries.map((c) => (
           <button
@@ -40,6 +49,7 @@ export default function CountryExplorer({ svg }: { svg: string }) {
           </button>
         ))}
       </Reveal>
+      </div>
     </div>
   );
 }

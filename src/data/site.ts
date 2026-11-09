@@ -15,12 +15,15 @@ export const links = {
   pack: '/press/CHAZIN_Press_Pack.zip',
   ridersLocal: '/press/CHAZIN_Riders_Local_2026.pdf',
   ridersInternational: '/press/CHAZIN_Riders_International_2026.pdf',
+  liveVideo: 'https://www.youtube.com/watch?v=ZKqKph_blNo',
 } as const;
 
 export const emails = {
   booking: 'booking@djchazin.com',
   info: 'info@djchazin.com',
 } as const;
+
+export const line = '@djchazin';
 
 export const socials = [
   { key: 'spotify', label: 'Spotify', href: links.spotify },
@@ -77,11 +80,12 @@ export const stats = [
 ] as const;
 
 export const bio = [
-  'Chazin is a Spanish-born DJ and producer of Venezuelan descent. He started DJing at 14 and has been performing professionally since 2005, delivering peak-time Tech House infused with Latin groove and percussive energy.',
-  "His career has taken him from the heart of Europe's club scene to stages across Europe, Asia and the Americas — from Pacha Ibiza and Bora Bora Ibiza to Nikki Beach Marbella, Maya Music Festival and Summer Daze.",
-  "After relocating to Asia, he held a residency of more than 300 shows at Illuzion Phuket, a DJ Mag Top 100 club, becoming a fixture of the region's international circuit.",
-  'Today, based in Bangkok, Chazin builds his sets around groove, tension and release. As founder of Magna Beat Records, he is driving the global rise of Latin-inspired Tech House.',
-  "In the studio, he treats every record as an extension of the dancefloor: rolling basslines, hypnotic vocal hooks and Latin percussion shaped by years of reading crowds night after night. With new music on the way and an expanding international calendar, his mission remains the same — to bring the warmth of Latin rhythm to the world's most demanding dancefloors.",
+  'As he continues to take his distinctive blend of Tech House, Latin groove and percussive energy to dance floors around the world, Spanish-born, Venezuelan-descent DJ and producer Chazin has established himself as one of the emerging names shaping the new wave of Latin-inspired electronic music.',
+  'From Europe to Asia and the Americas, Chazin has brought his high-energy sound to renowned venues and festivals including Bora Bora Ibiza, Maya Music Festival, Summer Daze Festival and Nikki Beach Marbella just to name a few. His international journey took a major step forward after relocating to Asia, where he became a resident at Illuzion Phuket, a DJ Mag Top 100 club, performing more than 300 shows and cementing his position within the electronic music scene.',
+  'Behind the decks, Chazin’s sets combine the drive and precision of Tech House with Latin-rooted rhythms, percussion and infectious grooves, creating a sound designed to connect with dance floors from intimate clubs to major festival stages.',
+  'His growing presence as a producer has seen his music reach audiences across the international electronic music circuit, with releases on respected labels and a catalogue that continues to expand. His productions have accumulated more than 200,000 streams, further establishing his identity as an artist with a clear and distinctive musical direction.',
+  'Beyond his own productions, Chazin is also the founder of Magna Beat Records, an independent label focused on Tech House and Latin Groove. Through the label, he is developing a platform for a new generation of artists and helping push Latin-inspired club music further into the global electronic scene.',
+  'With an ever-growing catalogue, an international touring background and a sound built around rhythm, energy and Latin identity, Chazin continues to expand his reach across the world’s dance floors, with his sights firmly set on becoming a defining name in the next generation of Latin House and Tech House.',
 ];
 
 export const clubs = [
@@ -106,12 +110,12 @@ export const alsoPlayed =
   'Westin Pool Party · Amnesia Bangkok · Kudo Beach Club · Sound Club Koh Samui · Banje Beach Dubrovnik · Over & Above Penang · Paradise Beach Festival · Rhythm Songkran Festival · Beerlao Festival · Garamond · Ramses · Nipponsei';
 
 export const flyers = [
-  { src: '/images/flyers/freedom.webp', w: 1000, h: 1333, title: 'Club Freedom', place: 'Oita, Japan · 2026' },
-  { src: '/images/flyers/sound.webp', w: 1000, h: 1333, title: 'Sound Club', place: 'Koh Samui, Thailand' },
-  { src: '/images/flyers/songkran.webp', w: 1000, h: 1241, title: 'Rhythm Pool Party', place: 'Hyatt Regency · Bangkok' },
-  { src: '/images/flyers/xmas.webp', w: 1000, h: 1013, title: 'Sound Club · Christmas', place: 'Koh Samui, Thailand' },
-  { src: '/images/flyers/madelements.webp', w: 1000, h: 1005, title: 'Mad Stash · Mad Elements', place: 'SO/ Bangkok · 2021' },
-  { src: '/images/flyers/spectrum.webp', w: 1000, h: 996, title: 'Mad Stash', place: 'Spectrum Lounge & Bar · 2021' },
+  { src: '/images/epk-v4/fl_babyface.webp', w: 900, h: 896, title: 'Babyface', place: 'Bangkok, Thailand' },
+  { src: '/images/epk-v4/fl_eden.webp', w: 900, h: 903, title: 'Eden · Picante', place: 'Bangkok, Thailand · July 2023' },
+  { src: '/images/epk-v4/fl_hatyai.webp', w: 900, h: 900, title: 'Hatyai Midnight Songkran', place: 'Hatyai, Thailand · April 2025' },
+  { src: '/images/epk-v4/fl_insanity.webp', w: 678, h: 960, title: 'Insanity Nightclub', place: 'Bangkok, Thailand' },
+  { src: '/images/epk-v4/fl_sound.webp', w: 900, h: 1279, title: 'Sound Club', place: 'Koh Samui, Thailand' },
+  { src: '/images/epk-v4/fl_maya.webp', w: 900, h: 1116, title: 'Maya Music Festival', place: 'Pattaya, Thailand · Jan–Feb 2020' },
 ] as const;
 
 export const countries = [
@@ -127,10 +131,14 @@ export const countries = [
 ] as const;
 
 export const pressPhotos = [
-  { file: '/press/photos/chazin-press-01.jpg', thumb: '/images/photos/cover.webp', label: 'Press photo 01' },
-  { file: '/press/photos/chazin-press-02.jpg', thumb: '/images/photos/profile.webp', label: 'Press photo 02' },
-  { file: '/press/photos/chazin-press-03.jpg', thumb: '/images/photos/prayer.webp', label: 'Press photo 03' },
-  { file: '/press/photos/chazin-press-04.jpg', thumb: '/images/photos/shades.webp', label: 'Press photo 04' },
+  { file: '/press/photos/chazin-press-01.jpg', thumb: '/images/photos/press-01.webp', label: 'Photo 01' },
+  { file: '/press/photos/chazin-press-02.jpg', thumb: '/images/photos/press-02.webp', label: 'Photo 02' },
+  { file: '/press/photos/chazin-press-03.jpg', thumb: '/images/photos/press-03.webp', label: 'Photo 03' },
+  { file: '/press/photos/chazin-press-04.jpg', thumb: '/images/photos/press-04.webp', label: 'Photo 04' },
+  { file: '/press/photos/chazin-press-05.jpg', thumb: '/images/photos/press-05.webp', label: 'Photo 05' },
+  { file: '/press/photos/chazin-press-06.jpg', thumb: '/images/photos/press-06.webp', label: 'Photo 06' },
+  { file: '/press/photos/chazin-press-07.jpg', thumb: '/images/photos/press-07.webp', label: 'Photo 07' },
+  { file: '/press/photos/chazin-press-08.jpg', thumb: '/images/photos/press-08.webp', label: 'Photo 08' },
 ] as const;
 
 export const pressLogos = [

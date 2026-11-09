@@ -7,6 +7,9 @@
     "borabora": [{ "city": "Ibiza", "country": "Spain", "code": "es", "lng": 1.413, "lat": 38.878 }],
     "opium": [{ "city": "Madrid", "country": "Spain", "code": "es", "lng": -3.693, "lat": 40.438 }],
     "kapital": [{ "city": "Madrid", "country": "Spain", "code": "es", "lng": -3.694, "lat": 40.41 }],
-    "wmiami": [{ "city": "Miami", "country": "USA", "code": "us", "lng": -80.189, "lat": 25.767 }]
+    "wmiami": [{ "city": "Miami", "country": "USA", "code": "us", "lng": -80.189, "lat": 25.767 }],
+    "maya": [{ "city": "Pattaya", "country": "Thailand", "code": "th", "lng": 100.877, "lat": 12.927 }],
+    "celavi": [{ "city": "Bangkok", "country": "Thailand", "code": "th", "lng": 100.529, "lat": 13.722 }],
+    "summerdaze": [{ "city": "Barcelona", "country": "Spain", "code": "es", "lng": 2.17, "lat": 41.39 }]
   }
 }

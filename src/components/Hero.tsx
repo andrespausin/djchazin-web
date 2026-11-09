@@ -48,7 +48,7 @@ export default function Hero() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/brand/chazin-logo-white.svg" alt="CHAZIN" width={1200} height={346} />
         </h1>
-        <p className="hero__line"><span>Latin Tech House</span><span>Spain × Venezuela</span><span>Based in Bangkok</span></p>
+        <p className="hero__line"><span>Latin House & Tech House</span><span>Spain × Venezuela</span><span>Based in Bangkok</span></p>
         <div className="btn-row hero__line">
           <a className="btn btn--gold" href={links.spotify} target="_blank" rel="noreferrer"><SocialIcon name="spotify" size={18} /> Listen on Spotify</a>
           <Link className="btn" href="/booking">Book Chazin <Arrow /></Link>

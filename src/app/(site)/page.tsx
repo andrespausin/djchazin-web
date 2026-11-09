@@ -1,23 +1,24 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Hero from '@/components/Hero';
+import LiveVideo from '@/components/LiveVideo';
 import { Reveal, SplitTitle } from '@/components/Motion';
 import { Arrow, Marquee, SocialIcon } from '@/components/Music';
 import Vinyl from '@/components/Vinyl';
 import { clubs, emails, links, releases } from '@/data/site';
 
 const explore = [
-  { href: '/about', n: '01', title: 'About', sub: 'The story, the sound, the world tour', img: '/images/photos/profile.webp' },
-  { href: '/music', n: '02', title: 'Music', sub: 'Releases & Magna Beat Records', img: '/images/photos/booth.webp' },
-  { href: '/shows', n: '03', title: 'Shows', sub: 'Clubs, festivals & flyers', img: '/images/photos/crowd.webp' },
-  { href: '/press', n: '04', title: 'Press', sub: 'Photos, logos & EPK download', img: '/images/photos/shades.webp' },
+  { href: '/about', n: '01', title: 'About', sub: 'The story, the sound, the world tour', img: '/images/epk-v4/p3_portrait.webp' },
+  { href: '/music', n: '02', title: 'Music', sub: 'Releases & Magna Beat Records', img: '/images/epk-v4/p8_illuzion.webp' },
+  { href: '/shows', n: '03', title: 'Shows', sub: 'Clubs, festivals & flyers', img: '/images/epk-v4/p2_crowd.webp' },
+  { href: '/press', n: '04', title: 'Press', sub: 'Photos, logos & EPK download', img: '/images/epk-v4/p9_profile.webp', pos: 'center 12%' },
 ];
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'MusicGroup',
   name: 'Chazin',
-  genre: 'Latin Tech House',
+  genre: ['Latin House', 'Tech House'],
   url: 'https://djchazin.com',
   email: emails.booking,
   sameAs: [links.spotify, links.beatport, links.instagram, links.youtube, links.tiktok, links.soundcloud],
@@ -52,19 +53,9 @@ export default function Home() {
         <Marquee items={clubs} speed={45} />
       </section>
 
-      {/* Live video — placeholder until footage is supplied */}
+      {/* Live video */}
       <section className="section">
-        <Reveal className="live">
-          <div className="live__frame" data-reveal>
-            <Image src="/images/photos/booth.webp" alt="" fill sizes="(max-width: 900px) 100vw, 80vw" style={{ objectFit: 'cover' }} />
-            <div className="live__shade" />
-            <div className="live__content">
-              <p className="eyebrow">Live set</p>
-              <h2 className="display live__title">Video coming soon</h2>
-              <a className="btn" href={links.youtube} target="_blank" rel="noreferrer"><SocialIcon name="youtube" size={18} /> Watch on YouTube</a>
-            </div>
-          </div>
-        </Reveal>
+        <Reveal className="live"><LiveVideo /></Reveal>
       </section>
 
       {/* Explore sub-pages */}
@@ -72,7 +63,7 @@ export default function Home() {
         <Reveal className="explore">
           {explore.map((e) => (
             <Link key={e.href} href={e.href} className="explore__card" data-reveal>
-              <span className="explore__img"><Image src={e.img} alt="" fill sizes="(max-width: 900px) 100vw, 25vw" style={{ objectFit: 'cover' }} /></span>
+              <span className="explore__img"><Image src={e.img} alt="" fill sizes="(max-width: 900px) 100vw, 25vw" style={{ objectFit: 'cover', objectPosition: e.pos }} /></span>
               <span className="explore__n">{e.n}</span>
               <span className="explore__title">{e.title}</span>
               <span className="explore__sub">{e.sub} <Arrow /></span>

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function Music() {
   return (
     <>
-      <PageHeader index="02" eyebrow="Music" title={'Selected\nreleases'} intro="Peak-time Tech House with Latin groove, percussion and hypnotic vocal hooks." />
+      <PageHeader index="02" eyebrow="Music" title={'Selected\nreleases'} intro="Latin House & Tech House built on Latin groove, percussion and hypnotic vocal hooks." image={{ src: '/images/epk-v4/p8_illuzion.webp', alt: 'Chazin at the decks in front of the crowd at Illuzion Phuket', position: 'center 20%' }} />
 
       <section className="section releases">
         {releases.map((r, i) => (
@@ -47,7 +47,7 @@ export default function Music() {
           <div data-reveal>
             <p className="eyebrow">Founder</p>
             <h2 className="display h2">Magna Beat Records</h2>
-            <p className="muted">The label pushing Latin-inspired Tech House to clubs and festivals worldwide.</p>
+            <p className="muted">An independent label focused on Tech House and Latin Groove, and a platform for a new generation of artists.</p>
             <div className="btn-row">
               <a className="btn" href={links.label} target="_blank" rel="noreferrer"><SocialIcon name="beatport" size={18} /> Label on Beatport <Arrow /></a>
               <a className="btn" href={links.beatport} target="_blank" rel="noreferrer"><SocialIcon name="beatport" size={18} /> Chazin on Beatport <Arrow /></a>

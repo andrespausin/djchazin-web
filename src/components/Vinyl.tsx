@@ -15,7 +15,7 @@ const REV_SECONDS = 1.8; // 33⅓ rpm
 export default function Vinyl({ release, cover, size = 340, priority = false }: {
   release: Track; cover: string; size?: number; priority?: boolean;
 }) {
-  const { track, status, toggle } = usePlayer();
+  const { track, status, toggle, setOnStage } = usePlayer();
   const root = useRef<HTMLDivElement>(null);
   const platter = useRef<HTMLSpanElement>(null);
   const spin = useRef<gsap.core.Tween | null>(null);
@@ -53,6 +53,15 @@ export default function Vinyl({ release, cover, size = 340, priority = false }: 
     io.observe(el);
     return () => io.disconnect();
   }, []);
+
+  // While this record is on screen it is the player; the bar appears once it scrolls away.
+  useEffect(() => {
+    const el = root.current;
+    if (!el || !isCurrent) return;
+    const io = new IntersectionObserver(([e]) => setOnStage(e.isIntersecting), { threshold: 0.35 });
+    io.observe(el);
+    return () => { io.disconnect(); setOnStage(false); };
+  }, [isCurrent, setOnStage]);
 
   const px = Math.round(size * 0.4);
   return (

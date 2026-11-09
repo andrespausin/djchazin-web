@@ -22,10 +22,14 @@ export default function About() {
           <blockquote className="quote">“Latin grooves move the world.”</blockquote>
         </div>
         <div className="about__photo">
-          <Image src="/images/photos/profile.webp" alt="Chazin portrait" fill priority sizes="(max-width: 700px) 100vw, (max-width: 1200px) 50vw, 30vw" style={{ objectFit: 'cover', objectPosition: '60% 20%' }} />
+          <Image src="/images/epk-v4/p3_portrait.webp" alt="Chazin portrait" fill priority sizes="(max-width: 700px) 100vw, (max-width: 1200px) 50vw, 30vw" style={{ objectFit: 'cover', objectPosition: 'center 25%' }} />
         </div>
         <Reveal className="about__text">
-          {bio.map((p, i) => <p key={i} data-reveal className={i === 0 ? 'lead' : undefined}>{p}</p>)}
+          {[bio.slice(0, 3), bio.slice(3)].map((column, c) => (
+            <div key={c} className="about__col">
+              {column.map((p, i) => <p key={i} data-reveal className={c === 0 && i === 0 ? 'lead' : undefined}>{p}</p>)}
+            </div>
+          ))}
         </Reveal>
       </section>
 

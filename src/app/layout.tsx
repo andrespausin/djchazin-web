@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
+import { Analytics } from '@vercel/analytics/next';
 import SmoothScroll from '@/components/SmoothScroll';
 import './globals.css';
 
@@ -43,6 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SmoothScroll />
         <div className="grain" aria-hidden="true" />
         {children}
+        <Analytics />
       </body>
     </html>
   );

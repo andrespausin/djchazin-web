@@ -20,6 +20,14 @@ export default function Press() {
           <span><span className="eyebrow">Electronic press kit · PDF</span><span className="display">Download the EPK</span></span>
           <Arrow size={28} />
         </a>
+        <a className="epk" href={links.pack} download>
+          <span><span className="eyebrow">Photos · logos · riders · ZIP</span><span className="display">Download the full press pack</span></span>
+          <Arrow size={28} />
+        </a>
+        <a className="epk" href={links.riders} download>
+          <span><span className="eyebrow">Hospitality &amp; technical · PDF</span><span className="display">Download the riders</span></span>
+          <Arrow size={28} />
+        </a>
       </section>
 
       <section className="section">

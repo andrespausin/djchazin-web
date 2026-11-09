@@ -1,7 +1,7 @@
 // Single source of truth for the site's content. Edit here, not in the components.
 
 export const links = {
-  spotify: 'https://open.spotify.com/artist/6KnRRY01lyNpgP8BY4cy8c',
+  spotify: 'https://open.spotify.com/intl-es/artist/1rVSu8yc8cVsW5gXMUMXrf?si=tzs4zzdlTkiUI_ptveBWRQ',
   beatport: 'https://www.beatport.com/artist/chazin/797529',
   label: 'https://www.beatport.com/label/magna-beat/148379',
   instagram: 'https://www.instagram.com/djchazin',
@@ -10,6 +10,8 @@ export const links = {
   soundcloud: 'https://soundcloud.com/djchazin',
   site: 'https://djchazin.com',
   epk: '/press/CHAZIN_EPK_2026.pdf',
+  pack: '/press/CHAZIN_Press_Pack.zip',
+  riders: '/press/CHAZIN_Riders_2026.pdf',
 } as const;
 
 export const emails = {
@@ -119,9 +121,13 @@ export const countries = [
 
 export const pressPhotos = [
   { file: '/press/photos/chazin-press-01.jpg', thumb: '/images/photos/cover.jpg', label: 'Press photo 01' },
-  { file: '/press/photos/chazin-press-02.jpg', thumb: '/images/photos/profile.jpg', label: 'Press photo 02' },
+  { file: '/press/photos/chazin-press-02.jpg', thumb: '/images/photos/press-02.jpg', label: 'Press photo 02' },
   { file: '/press/photos/chazin-press-03.jpg', thumb: '/images/photos/prayer.jpg', label: 'Press photo 03' },
   { file: '/press/photos/chazin-press-04.jpg', thumb: '/images/photos/shades.jpg', label: 'Press photo 04' },
+  { file: '/press/photos/chazin-press-05.jpg', thumb: '/images/photos/press-05.jpg', label: 'Press photo 05' },
+  { file: '/press/photos/chazin-press-06.jpg', thumb: '/images/photos/press-06.jpg', label: 'Press photo 06' },
+  { file: '/press/photos/chazin-press-07.jpg', thumb: '/images/photos/press-07.jpg', label: 'Press photo 07' },
+  { file: '/press/photos/chazin-press-08.jpg', thumb: '/images/photos/press-08.jpg', label: 'Press photo 08' },
 ] as const;
 
 export const pressLogos = [

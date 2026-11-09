@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: '/:all*(jpg|png|svg|woff2|pdf)',
+        source: '/:all*(jpg|png|webp|svg|woff2|pdf)',
         headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
       },
     ];

@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     description: 'Spain × Venezuela · Based in Bangkok. Founder of Magna Beat Records.',
     url: 'https://djchazin.com',
     siteName: 'CHAZIN',
-    images: [{ url: '/images/photos/cover.jpg', width: 1800, height: 2700 }],
+    images: [{ url: '/press/photos/chazin-press-01.jpg', width: 1717, height: 2576 }],
     type: 'website',
   },
   twitter: { card: 'summary_large_image' },

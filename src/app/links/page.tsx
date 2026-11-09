@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Equalizer, SocialIcon, Arrow } from '@/components/Music';
+import { SocialIcon, Arrow } from '@/components/Music';
 import { emails, links, socials } from '@/data/site';
 
 export const metadata: Metadata = {
@@ -14,7 +14,7 @@ export default function Links() {
     <main className="hub">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img className="hub__logo" src="/brand/chazin-logo-white.svg" alt="CHAZIN" width={280} height={81} />
-      <p className="eyebrow hub__tag"><Equalizer bars={4} /> Latin Tech House</p>
+      <p className="eyebrow hub__tag">Latin Tech House</p>
       <ul className="hub__list">
         {socials.map((s, i) => (
           <li key={s.key} style={{ animationDelay: `${0.08 * i}s` }}>

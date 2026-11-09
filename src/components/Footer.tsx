@@ -1,11 +1,10 @@
 import Link from 'next/link';
 import { emails, socials, nav } from '@/data/site';
-import { SocialIcon, Waveform } from './Music';
+import { SocialIcon } from './Music';
 
 export default function Footer() {
   return (
     <footer className="footer">
-      <Waveform bars={160} className="footer__wave" />
       <div className="footer__grid">
         <div className="footer__brand">
           {/* eslint-disable-next-line @next/next/no-img-element */}

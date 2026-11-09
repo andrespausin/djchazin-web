@@ -2,14 +2,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Hero from '@/components/Hero';
 import { Reveal, SplitTitle } from '@/components/Motion';
-import { Arrow, Equalizer, Marquee, SocialIcon, Vinyl, Waveform } from '@/components/Music';
+import { Arrow, Marquee, SocialIcon } from '@/components/Music';
+import Vinyl from '@/components/Vinyl';
 import { clubs, emails, links, releases } from '@/data/site';
 
 const explore = [
-  { href: '/about', n: '01', title: 'About', sub: 'The story, the sound, the world tour', img: '/images/photos/profile.jpg' },
-  { href: '/music', n: '02', title: 'Music', sub: 'Releases & Magna Beat Records', img: '/images/photos/booth.jpg' },
-  { href: '/shows', n: '03', title: 'Shows', sub: 'Clubs, festivals & flyers', img: '/images/photos/crowd.jpg' },
-  { href: '/press', n: '04', title: 'Press', sub: 'Photos, logos & EPK download', img: '/images/photos/shades.jpg' },
+  { href: '/about', n: '01', title: 'About', sub: 'The story, the sound, the world tour', img: '/images/photos/profile.webp' },
+  { href: '/music', n: '02', title: 'Music', sub: 'Releases & Magna Beat Records', img: '/images/photos/booth.webp' },
+  { href: '/shows', n: '03', title: 'Shows', sub: 'Clubs, festivals & flyers', img: '/images/photos/crowd.webp' },
+  { href: '/press', n: '04', title: 'Press', sub: 'Photos, logos & EPK download', img: '/images/photos/shades.webp' },
 ];
 
 const jsonLd = {
@@ -29,12 +30,12 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Hero />
 
-      {/* Now playing — latest release */}
+      {/* Latest release */}
       <section className="section now">
         <Reveal className="now__grid">
-          <div data-reveal><Vinyl cover={latest.cover} title={latest.title} size={340} /></div>
+          <div data-reveal><Vinyl release={latest} cover={latest.cover} size={380} /></div>
           <div className="now__info" data-reveal>
-            <p className="eyebrow"><Equalizer bars={4} /> Now playing · Latest release</p>
+            <p className="eyebrow">Latest release</p>
             <SplitTitle as="h2" text={latest.title} className="display now__title" onScroll />
             <p className="muted">{latest.label}{latest.year ? ` · ${latest.year}` : ''}</p>
             <div className="btn-row">
@@ -55,12 +56,11 @@ export default function Home() {
       <section className="section">
         <Reveal className="live">
           <div className="live__frame" data-reveal>
-            <Image src="/images/photos/booth.jpg" alt="" fill sizes="(max-width: 900px) 100vw, 80vw" style={{ objectFit: 'cover' }} />
+            <Image src="/images/photos/booth.webp" alt="" fill sizes="(max-width: 900px) 100vw, 80vw" style={{ objectFit: 'cover' }} />
             <div className="live__shade" />
             <div className="live__content">
-              <p className="eyebrow"><span className="rec" /> Live set</p>
+              <p className="eyebrow">Live set</p>
               <h2 className="display live__title">Video coming soon</h2>
-              <Waveform bars={90} className="live__wave" />
               <a className="btn" href={links.youtube} target="_blank" rel="noreferrer"><SocialIcon name="youtube" size={18} /> Watch on YouTube</a>
             </div>
           </div>
@@ -83,7 +83,7 @@ export default function Home() {
 
       {/* Booking CTA */}
       <section className="section cta">
-        <SplitTitle as="h2" text={"Let's make\nthe floor move."} className="display cta__title" onScroll />
+        <SplitTitle as="h2" text={"Let's make\nthe floor move"} className="display cta__title" onScroll />
         <a className="cta__mail" href={`mailto:${emails.booking}`}>{emails.booking} <Arrow size={22} /></a>
       </section>
     </>

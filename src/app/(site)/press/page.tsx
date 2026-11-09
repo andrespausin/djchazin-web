@@ -13,13 +13,17 @@ export const metadata: Metadata = {
 export default function Press() {
   return (
     <>
-      <PageHeader index="04" eyebrow="Press" title={'Press\nassets.'} intro="Official photos, logos and the electronic press kit — free to use for promotion." />
+      <PageHeader index="04" eyebrow="Press" title={'Press\nassets'} intro="Official photos, logos and the electronic press kit — free to use for promotion." />
 
-      <section className="section">
+      <section className="section press-top">
         <a className="epk" href={links.epk} download>
           <span><span className="eyebrow">Electronic press kit · PDF</span><span className="display">Download the EPK</span></span>
           <Arrow size={28} />
         </a>
+        <div>
+          <p className="eyebrow">Short bio · copy & paste</p>
+          <div className="short-bio"><p>{bio[0]} {bio[3]}</p></div>
+        </div>
       </section>
 
       <section className="section">
@@ -47,11 +51,6 @@ export default function Press() {
             </a>
           ))}
         </Reveal>
-      </section>
-
-      <section className="section">
-        <p className="eyebrow">Short bio · copy & paste</p>
-        <div className="short-bio"><p>{bio[0]} {bio[3]}</p></div>
       </section>
     </>
   );

@@ -1,0 +1,12 @@
+{
+  "venues": {
+    "pacha": [{ "city": "Ibiza", "country": "Spain", "code": "es", "lng": 1.444, "lat": 38.917 }],
+    "illuzion": [{ "city": "Phuket", "country": "Thailand", "code": "th", "lng": 98.298, "lat": 7.893 }],
+    "nikki": [{ "city": "Marbella", "country": "Spain", "code": "es", "lng": -4.759, "lat": 36.495 }],
+    "shoko": [{ "city": "Barcelona", "country": "Spain", "code": "es", "lng": 2.197, "lat": 41.385 }],
+    "borabora": [{ "city": "Ibiza", "country": "Spain", "code": "es", "lng": 1.413, "lat": 38.878 }],
+    "opium": [{ "city": "Madrid", "country": "Spain", "code": "es", "lng": -3.693, "lat": 40.438 }],
+    "kapital": [{ "city": "Madrid", "country": "Spain", "code": "es", "lng": -3.694, "lat": 40.41 }],
+    "wmiami": [{ "city": "Miami", "country": "USA", "code": "us", "lng": -80.189, "lat": 25.767 }]
+  }
+}

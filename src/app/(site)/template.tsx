@@ -13,7 +13,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     gsap.timeline()
       .fromTo('.fader', { scaleY: 1, transformOrigin: 'top' }, { scaleY: 0, duration: 0.7, ease: 'expo.inOut' })
-      .from('.page-body', { autoAlpha: 0, y: 24, duration: 0.8, ease: 'expo.out' }, '-=0.35');
+      .from('.page-body', { autoAlpha: 0, y: 24, duration: 0.8, ease: 'expo.out', clearProps: 'transform,opacity,visibility' }, '-=0.35');
   }, { scope: ref });
   return (
     <div ref={ref}>

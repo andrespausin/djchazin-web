@@ -20,6 +20,18 @@ export default function Press() {
           <span><span className="eyebrow">Electronic press kit · PDF</span><span className="display">Download the EPK</span></span>
           <Arrow size={28} />
         </a>
+        <a className="epk" href={links.pack} download>
+          <span><span className="eyebrow">Photos · logos · riders · ZIP</span><span className="display">Download the full press pack</span></span>
+          <Arrow size={28} />
+        </a>
+        <a className="epk" href={links.ridersLocal} download>
+          <span><span className="eyebrow">Local clubs · PDF</span><span className="display">Riders — local</span></span>
+          <Arrow size={28} />
+        </a>
+        <a className="epk" href={links.ridersInternational} download>
+          <span><span className="eyebrow">International bookings · PDF</span><span className="display">Riders — international</span></span>
+          <Arrow size={28} />
+        </a>
         <div>
           <p className="eyebrow">Short bio · copy & paste</p>
           <div className="short-bio"><p>{bio[0]} {bio[3]}</p></div>

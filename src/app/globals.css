@@ -433,3 +433,4 @@ html.player-open body { padding-bottom: var(--dock-h); }
   .grain { display: none; }
   .hub__list li { opacity: 1; transform: none; }
 }
+.epk + .epk { margin-top: 12px; }

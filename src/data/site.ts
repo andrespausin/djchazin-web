@@ -10,6 +10,7 @@ export const links = {
   youtube: 'https://www.youtube.com/@DjChazin',
   tiktok: 'https://www.tiktok.com/@djchazin',
   soundcloud: 'https://soundcloud.com/djchazin',
+  djset: 'https://on.soundcloud.com/yqAdwmulZqU9Aqq7T0',
   site: 'https://djchazin.com',
   epk: '/press/CHAZIN_EPK_2026.pdf',
   pack: '/press/CHAZIN_Press_Pack.zip',
@@ -100,6 +101,7 @@ export const clubs = [
   { slug: 'kapital', name: 'Teatro Kapital', logo: '/images/clubs/kapital.webp' },
   { slug: 'summerdaze', name: 'Summer Daze Series', logo: '/images/clubs/summerdaze.webp' },
   { slug: 'wmiami', name: 'W Miami', logo: '/images/clubs/wmiami.webp' },
+  { slug: 'overabove', name: 'Over & Above Penang', logo: '/images/clubs/overabove.webp' },
 ] as const;
 
 export type VenueSite = { city: string; country: string; code: string; lng: number; lat: number };
@@ -107,7 +109,7 @@ export type VenueSite = { city: string; country: string; code: string; lng: numb
 export const venueSites: Record<string, VenueSite[]> = places.venues;
 
 export const alsoPlayed =
-  'Westin Pool Party · Amnesia Bangkok · Kudo Beach Club · Sound Club Koh Samui · Banje Beach Dubrovnik · Over & Above Penang · Paradise Beach Festival · Rhythm Songkran Festival · Beerlao Festival · Garamond · Ramses · Nipponsei';
+  'Westin Pool Party · Amnesia Bangkok · Kudo Beach Club · Sound Club Koh Samui · Banje Beach Dubrovnik · Paradise Beach Festival · Rhythm Songkran Festival · Beerlao Festival · Garamond · Ramses · Nipponsei';
 
 export const flyers = [
   { src: '/images/epk-v4/fl_babyface.webp', w: 900, h: 896, title: 'Babyface', place: 'Bangkok, Thailand' },

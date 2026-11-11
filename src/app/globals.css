@@ -493,4 +493,4 @@ html.player-open body { padding-bottom: var(--dock-h); }
 
 .sc-cta .spotify-cta__covers img:nth-child(2) { rotate: 4deg; }
 .sc-cta:hover img:nth-child(2) { translate: 10px 0; rotate: 7deg; }
-@media (min-width: 621px) { .sc-cta .spotify-cta__covers { padding-right: calc(clamp(84px, 11vw, 168px) * 0.91 + 8px); } }
+@media (min-width: 621px) { .sc-cta .spotify-cta__covers { padding-left: calc(clamp(84px, 11vw, 168px) * 0.455); padding-right: calc(clamp(84px, 11vw, 168px) * 0.545 + 8px); } }

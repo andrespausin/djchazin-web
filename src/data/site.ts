@@ -133,6 +133,7 @@ export const countries = [
 ] as const;
 
 export const pressPhotos = [
+  { file: '/press/photos/chazin-press-00-color.jpg', thumb: '/images/photos/press-color.webp', label: 'Photo · colour' },
   { file: '/press/photos/chazin-press-01.jpg', thumb: '/images/photos/press-01.webp', label: 'Photo 01' },
   { file: '/press/photos/chazin-press-02.jpg', thumb: '/images/photos/press-02.webp', label: 'Photo 02' },
   { file: '/press/photos/chazin-press-03.jpg', thumb: '/images/photos/press-03.webp', label: 'Photo 03' },
@@ -146,6 +147,10 @@ export const pressPhotos = [
 export const pressLogos = [
   { file: '/press/logos/chazin_logo_white.svg', preview: '/brand/chazin-logo-white.svg', label: 'Chazin · white · SVG', light: false },
   { file: '/press/logos/chazin_logo_black.svg', preview: '/brand/chazin-logo-black.svg', label: 'Chazin · black · SVG', light: true },
+  { file: '/press/logos/chazin-wordmark-white.png', preview: '/press/logos/chazin-wordmark-white.png', label: 'Chazin · wordmark · PNG', light: false },
+  { file: '/press/logos/chazin-wordmark-chrome.png', preview: '/press/logos/chazin-wordmark-chrome.png', label: 'Chazin · chrome wordmark · PNG', light: false },
+  { file: '/press/logos/chazin-emblem-white.png', preview: '/press/logos/chazin-emblem-white.png', label: 'Chazin · emblem · PNG', light: false },
+  { file: '/press/logos/chazin-emblem-chrome.png', preview: '/press/logos/chazin-emblem-chrome.png', label: 'Chazin · chrome emblem · PNG', light: false },
   { file: '/press/logos/magna-beat-white.svg', preview: '/brand/magna-beat-white.svg', label: 'Magna Beat · white · SVG', light: false },
   { file: '/press/logos/magna-beat-black.svg', preview: '/press/logos/magna-beat-black.svg', label: 'Magna Beat · black · SVG', light: true },
   { file: '/press/logos/magna-beat-white.png', preview: '/brand/magna-beat-white.svg', label: 'Magna Beat · white · PNG', light: false },

@@ -10,6 +10,7 @@ export const links = {
   youtube: 'https://www.youtube.com/@DjChazin',
   tiktok: 'https://www.tiktok.com/@djchazin',
   soundcloud: 'https://soundcloud.com/djchazin',
+  djset: 'https://on.soundcloud.com/yqAdwmulZqU9Aqq7T0',
   site: 'https://djchazin.com',
   epk: '/press/CHAZIN_EPK_2026.pdf',
   pack: '/press/CHAZIN_Press_Pack.zip',
@@ -100,6 +101,7 @@ export const clubs = [
   { slug: 'kapital', name: 'Teatro Kapital', logo: '/images/clubs/kapital.webp' },
   { slug: 'summerdaze', name: 'Summer Daze Series', logo: '/images/clubs/summerdaze.webp' },
   { slug: 'wmiami', name: 'W Miami', logo: '/images/clubs/wmiami.webp' },
+  { slug: 'overabove', name: 'Over & Above Penang', logo: '/images/clubs/overabove.webp' },
 ] as const;
 
 export type VenueSite = { city: string; country: string; code: string; lng: number; lat: number };
@@ -107,7 +109,7 @@ export type VenueSite = { city: string; country: string; code: string; lng: numb
 export const venueSites: Record<string, VenueSite[]> = places.venues;
 
 export const alsoPlayed =
-  'Westin Pool Party · Amnesia Bangkok · Kudo Beach Club · Sound Club Koh Samui · Banje Beach Dubrovnik · Over & Above Penang · Paradise Beach Festival · Rhythm Songkran Festival · Beerlao Festival · Garamond · Ramses · Nipponsei';
+  'Westin Pool Party · Amnesia Bangkok · Kudo Beach Club · Sound Club Koh Samui · Banje Beach Dubrovnik · Paradise Beach Festival · Rhythm Songkran Festival · Beerlao Festival · Garamond · Ramses · Nipponsei';
 
 export const flyers = [
   { src: '/images/epk-v4/fl_babyface.webp', w: 900, h: 896, title: 'Babyface', place: 'Bangkok, Thailand' },
@@ -131,6 +133,7 @@ export const countries = [
 ] as const;
 
 export const pressPhotos = [
+  { file: '/press/photos/chazin-press-00-color.jpg', thumb: '/images/photos/press-color.webp', label: 'Photo · colour' },
   { file: '/press/photos/chazin-press-01.jpg', thumb: '/images/photos/press-01.webp', label: 'Photo 01' },
   { file: '/press/photos/chazin-press-02.jpg', thumb: '/images/photos/press-02.webp', label: 'Photo 02' },
   { file: '/press/photos/chazin-press-03.jpg', thumb: '/images/photos/press-03.webp', label: 'Photo 03' },
@@ -144,6 +147,10 @@ export const pressPhotos = [
 export const pressLogos = [
   { file: '/press/logos/chazin_logo_white.svg', preview: '/brand/chazin-logo-white.svg', label: 'Chazin · white · SVG', light: false },
   { file: '/press/logos/chazin_logo_black.svg', preview: '/brand/chazin-logo-black.svg', label: 'Chazin · black · SVG', light: true },
+  { file: '/press/logos/chazin-wordmark-white.png', preview: '/press/logos/chazin-wordmark-white.png', label: 'Chazin · wordmark · PNG', light: false },
+  { file: '/press/logos/chazin-wordmark-chrome.png', preview: '/press/logos/chazin-wordmark-chrome.png', label: 'Chazin · chrome wordmark · PNG', light: false },
+  { file: '/press/logos/chazin-emblem-white.png', preview: '/press/logos/chazin-emblem-white.png', label: 'Chazin · emblem · PNG', light: false },
+  { file: '/press/logos/chazin-emblem-chrome.png', preview: '/press/logos/chazin-emblem-chrome.png', label: 'Chazin · chrome emblem · PNG', light: false },
   { file: '/press/logos/magna-beat-white.svg', preview: '/brand/magna-beat-white.svg', label: 'Magna Beat · white · SVG', light: false },
   { file: '/press/logos/magna-beat-black.svg', preview: '/press/logos/magna-beat-black.svg', label: 'Magna Beat · black · SVG', light: true },
   { file: '/press/logos/magna-beat-white.png', preview: '/brand/magna-beat-white.svg', label: 'Magna Beat · white · PNG', light: false },

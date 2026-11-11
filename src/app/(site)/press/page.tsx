@@ -24,7 +24,7 @@ export default function Press() {
           <a className="epk" href={links.pack} download>
             <span>
               <span className="display">Download the full press kit</span>
-              <span className="press-kit__sub">EPK, riders (local + international), 8 photos and logos · ZIP · {packSize}</span>
+              <span className="press-kit__sub">EPK, riders (local + international), photos and every logo version (AI, EPS, PDF, PSD, PNG) · ZIP · {packSize}</span>
             </span>
             <Arrow size={28} />
           </a>

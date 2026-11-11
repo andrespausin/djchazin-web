@@ -491,10 +491,6 @@ html.player-open body { padding-bottom: var(--dock-h); }
   .hub__list li { opacity: 1; transform: none; }
 }
 
-.sc-cta__cover { position: relative; flex: none; width: clamp(180px, 28vw, 360px); aspect-ratio: 16 / 9; overflow: hidden; border-radius: 3px; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55); }
-.sc-cta__cover img { width: 100%; height: 100%; object-fit: cover; transition: scale 0.7s var(--ease); }
-.sc-cta__play { position: absolute; inset: 0; margin: auto; width: 68px; height: 68px; border-radius: 50%; display: grid; place-items: center; background: var(--gold); color: #0b0b0b; transition: scale 0.5s var(--ease); }
-.sc-cta__play svg { margin-left: 3px; }
-.sc-cta:hover .sc-cta__cover img { scale: 1.06; }
-.sc-cta:hover .sc-cta__play { scale: 1.1; }
-@media (max-width: 620px) { .sc-cta__cover { width: 100%; } }
+.sc-cta .spotify-cta__covers img:nth-child(2) { rotate: 4deg; }
+.sc-cta:hover img:nth-child(2) { translate: 10px 0; rotate: 7deg; }
+@media (min-width: 621px) { .sc-cta .spotify-cta__covers { padding-right: calc(clamp(84px, 11vw, 168px) * 0.91 + 8px); } }

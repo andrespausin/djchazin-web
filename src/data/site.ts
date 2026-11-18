@@ -133,7 +133,6 @@ export const countries = [
 ] as const;
 
 export const pressPhotos = [
-  { file: '/press/photos/chazin-press-00-color.jpg', thumb: '/images/photos/press-color.webp', label: 'Photo · colour' },
   { file: '/press/photos/chazin-press-01.jpg', thumb: '/images/photos/press-01.webp', label: 'Photo 01' },
   { file: '/press/photos/chazin-press-02.jpg', thumb: '/images/photos/press-02.webp', label: 'Photo 02' },
   { file: '/press/photos/chazin-press-03.jpg', thumb: '/images/photos/press-03.webp', label: 'Photo 03' },
